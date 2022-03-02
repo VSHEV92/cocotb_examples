@@ -3,10 +3,10 @@ from cocotb.clock import Clock
 from cocotb.triggers import ClockCycles
 from cocotb.triggers import RisingEdge 
 
-async def counter_monitor(dut, clock):
+async def counter_monitor(dut):
     while True:
         await RisingEdge(dut.clk)
-        if not dut.reset.value:
+        if dut.reset.value:
             dut._log.info("Counter in reset state")    
         else:
             dut._log.info("Counter value is %s", dut.Q.value)
@@ -25,7 +25,7 @@ async def test(dut):
     cocotb.start_soon(clock.start(start_high=False))
 
     # запуск логирования
-    cocotb.start_soon(counter_monitor(dut, clock))
+    cocotb.start_soon(counter_monitor(dut))
 
     # снятие сигнала сброса
     await ClockCycles(dut.clk, 5)
