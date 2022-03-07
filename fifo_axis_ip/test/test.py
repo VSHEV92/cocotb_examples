@@ -119,7 +119,6 @@ async def test(dut):
     cocotb.start_soon(fifo_axis_rd_driver(dut, 3, 1))
 
     # # ожидаем окончания транзакций
-    await ClockCycles(dut.s_axis_aclk, trans_numb)
-    raise TestSuccess("Fifo pass %s transactions" % trans_numb)
-
+    await ClockCycles(dut.s_axis_aclk, trans_numb * 1000)
+    
 

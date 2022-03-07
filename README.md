@@ -1,31 +1,16 @@
 ------
 
-## Частотная синхронизация для QAM сигналов
-
-Демонстрация трансляции Simulink модели с помощью MATLAB HDL Verifier и DPI в эталонную модель для HDL верификации на примере системы частотной синхронизации для QAM-16 сигналов. 
+## Пример тестовых окружений, написанных на cocotb
 
 ------
 
-#### Иерархия файлов
+#### Примеры
 
-- **HDL_Verifier_Source** - результаты трансляции отдельных подсистем модели
-- **model_tb.sv** - testbench для запуска в HDL-симуляторе
-- **QAM16_PLL_Model.slx** - Simulink модель
-- **run.do** - скрипт для запуска testbench 
-
-------
-
-#### Makefile
-
-- **make test** - запуск testbench 
-- **make clean** - очистка проекта
+- **counter** - счетчик, написанный на SystemVerilog
+- **counter_ip** - счетчик в виде IP-ядра Vivado
+- **fifo_ip** - стандартное fifo в виде IP-ядра Vivado  
+- **fifo_axis_ip** - IP-ядро Vivado, реализующее fifo с AXI-Stream интерфейсом
+- **fifo_axis_ip_bus** - IP-ядро Vivado, реализующее fifo с AXI-Stream интерфейсом (cocotbext-axi)
 
 ------
 
-#### Подсистемы Simulink модели
-
-- **Signal_Source** - источник QAM16 сигнала
-- **Channel** - канал передачи с AWGN
-- **QAM_PLL** - система частотной синхронизации
-
-![model](model.png)
