@@ -1,7 +1,7 @@
 import random
 import cocotb
 from cocotb.clock import Clock
-from cocotb.triggers import RisingEdge, ClockCycles
+from cocotb.triggers import ClockCycles
 from cocotbext.axi import AxiStreamBus, AxiStreamSource, AxiStreamSink
 
 # генератор случайных пауз в транзакциях
@@ -42,6 +42,6 @@ async def test(dut):
     # считывание и проверка выходных данных
     for inframe in indata:
         outframe = await sink.read(1)
-        dut._log.debug("Wtite data: %s. Read data: %s.", inframe, outframe[0])
+        dut._log.debug("Write data: %s. Read data: %s.", inframe, outframe[0])
         assert inframe == outframe[0], "Write and read data mismatch"
 
